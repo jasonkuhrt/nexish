@@ -100,6 +100,7 @@ type FoxFieldType =
   | 'String'
   | 'Boolean'
   | 'ID'
+  | 'Float'
   | string // TODO `string` should become a typegen lookup
   | GQL2.GraphQLType
 
@@ -246,6 +247,8 @@ const foxFieldTypeToGQLFieldType = (
       return GQL.GraphQLID
     case 'Boolean':
       return GQL.GraphQLBoolean
+    case 'Float':
+      return GQL.GraphQLFloat
     default:
       if (GQL2.isType(foxFieldType)) {
         return foxFieldType

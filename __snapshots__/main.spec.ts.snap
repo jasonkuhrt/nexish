@@ -17,6 +17,16 @@ Object {
       "subscribe": undefined,
       "type": "Boolean",
     },
+    "float": Object {
+      "args": Object {},
+      "astNode": undefined,
+      "deprecationReason": undefined,
+      "description": undefined,
+      "extensions": undefined,
+      "resolve": [Function],
+      "subscribe": undefined,
+      "type": "Float",
+    },
     "id": Object {
       "args": Object {},
       "astNode": undefined,
@@ -70,6 +80,16 @@ Object {
       "resolve": [Function],
       "subscribe": undefined,
       "type": "Boolean",
+    },
+    "float": Object {
+      "args": Object {},
+      "astNode": undefined,
+      "deprecationReason": undefined,
+      "description": undefined,
+      "extensions": undefined,
+      "resolve": [Function],
+      "subscribe": undefined,
+      "type": "Int",
     },
     "id": Object {
       "args": Object {},

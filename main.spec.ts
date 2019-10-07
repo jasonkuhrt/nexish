@@ -9,6 +9,7 @@ describe('defining blocks', () => {
         t.field('string', { type: 'String' })
         t.field('id', { type: 'ID' })
         t.field('int', { type: 'Int' })
+        t.field('float', { type: 'Float' })
       },
     })
     expect(Foo.toConfig()).toMatchSnapshot()
@@ -22,6 +23,7 @@ describe('defining blocks', () => {
         t.string('string')
         t.id('id')
         t.int('int')
+        t.int('float')
       },
     })
     expect(Foo.toConfig()).toMatchSnapshot()
