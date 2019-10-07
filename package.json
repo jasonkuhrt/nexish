@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "format": "prettier --write '*.ts'",
+    "dev": "tsc -w",
+    "dev:test": "jest --watch"
+  },
   "dependencies": {
     "apollo-server": "^2.9.4",
     "graphql": "^14.5.8",

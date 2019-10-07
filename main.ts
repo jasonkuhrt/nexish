@@ -24,12 +24,9 @@ import * as GQL from 'graphql'
 // ====================
 //
 
-type Predicate<T extends unknown> = (x: T) => boolean
+type Predicate<T> = (x: T) => boolean
 
-const partition = <T extends unknown>(
-  predicate: Predicate<T>,
-  xs: T[],
-): [T[], T[]] => {
+const partition = <T>(predicate: Predicate<T>, xs: T[]): [T[], T[]] => {
   const left: T[] = []
   const right: T[] = []
 
@@ -140,16 +137,16 @@ const createObjectDefiner = (state: ObjectDefinerState): ObjectDefiner => {
       state.fields.push({ name, ...options })
     },
     int: (name, options) => {
-      state.fields.push({ name, ...options, type: 'Int' })
+      state.fields.push({ name, ...options, type: GQL.GraphQLInt })
     },
     string: (name, options) => {
-      state.fields.push({ name, ...options, type: 'String' })
+      state.fields.push({ name, ...options, type: GQL.GraphQLString })
     },
     boolean: (name, options) => {
-      state.fields.push({ name, ...options, type: 'Int' })
+      state.fields.push({ name, ...options, type: GQL.GraphQLBoolean })
     },
     id: (name, options) => {
-      state.fields.push({ name, ...options, type: 'id' })
+      state.fields.push({ name, ...options, type: GQL.GraphQLID })
     },
   }
 }
@@ -245,12 +242,15 @@ const foxFieldTypeToGQLFieldType = (
       return GQL.GraphQLString
     case 'Int':
       return GQL.GraphQLInt
-    // TODO Boolean, ID, ...
+    case 'ID':
+      return GQL.GraphQLID
+    case 'Boolean':
+      return GQL.GraphQLBoolean
     default:
       if (GQL2.isType(foxFieldType)) {
         return foxFieldType
       } else {
-        return foxFieldType
+        // return foxFieldType
         throw new Error(
           `Do not know how to convert fox type "${foxFieldType}" to GraphQL lib type.`,
         )
@@ -258,78 +258,4 @@ const foxFieldTypeToGQLFieldType = (
   }
 }
 
-//
-//
-// App Example
-// ===========
-//
-
-const Colors = enom({
-  name: 'Colors',
-  definition: t => {
-    t.member('red')
-    t.member('blue')
-    t.member('black')
-  },
-})
-
-const Person = object({
-  name: 'Person',
-  definition: t => {
-    t.field('firstName', {
-      type: 'String',
-      resolve: () => 'jason',
-    })
-    t.field('lastName', {
-      type: 'String',
-    })
-    t.int('age')
-    t.field('preferredColor', {
-      type: 'Stringg',
-    })
-  },
-})
-
-const Query = object({
-  name: 'Query',
-  definition: t => {
-    t.field('person', {
-      type: Person,
-      resolve: () => ({ firstName: 'jason', lastName: 'kuhrt' }),
-    })
-    t.string('hello', {
-      resolve: () => 'world',
-    })
-  },
-})
-
-const schema = createSchema([Person, Query, Colors])
-// TODO Example of runtime error, add valiation
-// const schema = createSchema([Person])
-
-//
-//
-// Test Drive the App
-// ==================
-//
-
-GQL.printSchema(schema) // ?
-
-GQL.graphql(
-  schema,
-  `
-query {
-  hello
-  person {
-    firstName
-    lastName
-  }
-}
-`,
-) // ?
-
-//
-//
-// Misc Exploration
-// ================
-//
+export { object, enom, createSchema }
