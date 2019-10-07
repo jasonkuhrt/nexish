@@ -1,6 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`defining object types of built in scalars 1`] = `
+exports[`defining blocks is possible to define scalar fields 1`] = `
+Object {
+  "astNode": undefined,
+  "description": undefined,
+  "extensionASTNodes": Array [],
+  "extensions": undefined,
+  "fields": Object {
+    "boolean": Object {
+      "args": Object {},
+      "astNode": undefined,
+      "deprecationReason": undefined,
+      "description": undefined,
+      "extensions": undefined,
+      "resolve": [Function],
+      "subscribe": undefined,
+      "type": "Boolean",
+    },
+    "id": Object {
+      "args": Object {},
+      "astNode": undefined,
+      "deprecationReason": undefined,
+      "description": undefined,
+      "extensions": undefined,
+      "resolve": [Function],
+      "subscribe": undefined,
+      "type": "ID",
+    },
+    "int": Object {
+      "args": Object {},
+      "astNode": undefined,
+      "deprecationReason": undefined,
+      "description": undefined,
+      "extensions": undefined,
+      "resolve": [Function],
+      "subscribe": undefined,
+      "type": "Int",
+    },
+    "string": Object {
+      "args": Object {},
+      "astNode": undefined,
+      "deprecationReason": undefined,
+      "description": undefined,
+      "extensions": undefined,
+      "resolve": [Function],
+      "subscribe": undefined,
+      "type": "String",
+    },
+  },
+  "interfaces": Array [],
+  "isTypeOf": undefined,
+  "name": "Foo",
+}
+`;
+
+exports[`defining blocks is possible to use shorthand for scalars 1`] = `
 Object {
   "astNode": undefined,
   "description": undefined,
