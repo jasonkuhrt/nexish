@@ -3,6 +3,7 @@ import * as GQL from 'graphql'
 // IDEA Maybe we want to replce field option `type` with `returns`
 
 // TODO description support
+// TODO enum
 // TODO enum shorthands:
 //  - enom('colors', 'red', 'blue', 'black')
 //  - enom('colors', ['red', 'blue', 'black'])
@@ -15,7 +16,7 @@ import * as GQL from 'graphql'
 // TODO nullable
 // TODO args
 // TODO dynamics
-// TODO field type derefing
+// TODO typegen
 
 //
 //
