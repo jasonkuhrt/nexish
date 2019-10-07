@@ -1,4 +1,5 @@
 import { object } from './main'
+import * as GQL from 'graphql'
 
 describe('defining blocks', () => {
   it('is possible to define scalar fields', () => {
@@ -13,6 +14,25 @@ describe('defining blocks', () => {
       },
     })
     expect(Foo.toConfig()).toMatchSnapshot()
+  })
+
+  it('is possible to define inline field types', () => {
+    const A = object({
+      name: 'A',
+      definition: t => {
+        t.field('foo', {
+          type: new GQL.GraphQLObjectType({
+            name: 'B',
+            fields: {
+              bar: {
+                type: GQL.GraphQLString,
+              },
+            },
+          }),
+        })
+      },
+    })
+    expect(A.toConfig()).toMatchSnapshot()
   })
 
   it('is possible to use shorthand for scalars', () => {
