@@ -2,152 +2,90 @@
 
 exports[`defining blocks is possible to define inline field types 1`] = `
 Object {
-  "astNode": undefined,
-  "description": undefined,
-  "extensionASTNodes": Array [],
-  "extensions": undefined,
-  "fields": Object {
-    "foo": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
+  "fields": Array [
+    Object {
+      "name": "foo",
       "resolve": [Function],
-      "subscribe": undefined,
       "type": "B",
     },
-  },
-  "interfaces": Array [],
-  "isTypeOf": undefined,
+  ],
   "name": "A",
 }
 `;
 
 exports[`defining blocks is possible to define scalar fields 1`] = `
 Object {
-  "astNode": undefined,
-  "description": undefined,
-  "extensionASTNodes": Array [],
-  "extensions": undefined,
-  "fields": Object {
-    "boolean": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
+  "fields": Array [
+    Object {
+      "name": "boolean",
       "resolve": [Function],
-      "subscribe": undefined,
       "type": "Boolean",
     },
-    "float": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
+    Object {
+      "name": "string",
       "resolve": [Function],
-      "subscribe": undefined,
-      "type": "Float",
-    },
-    "id": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
-      "resolve": [Function],
-      "subscribe": undefined,
-      "type": "ID",
-    },
-    "int": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
-      "resolve": [Function],
-      "subscribe": undefined,
-      "type": "Int",
-    },
-    "string": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
-      "resolve": [Function],
-      "subscribe": undefined,
       "type": "String",
     },
-  },
-  "interfaces": Array [],
-  "isTypeOf": undefined,
+    Object {
+      "name": "id",
+      "resolve": [Function],
+      "type": "ID",
+    },
+    Object {
+      "name": "int",
+      "resolve": [Function],
+      "type": "Int",
+    },
+    Object {
+      "name": "float",
+      "resolve": [Function],
+      "type": "Float",
+    },
+  ],
   "name": "Foo",
 }
 `;
 
 exports[`defining blocks is possible to use shorthand for scalars 1`] = `
 Object {
-  "astNode": undefined,
-  "description": undefined,
-  "extensionASTNodes": Array [],
-  "extensions": undefined,
-  "fields": Object {
-    "boolean": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
+  "fields": Array [
+    Object {
+      "name": "boolean",
       "resolve": [Function],
-      "subscribe": undefined,
       "type": "Boolean",
     },
-    "float": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
+    Object {
+      "name": "string",
       "resolve": [Function],
-      "subscribe": undefined,
-      "type": "Int",
-    },
-    "id": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
-      "resolve": [Function],
-      "subscribe": undefined,
-      "type": "ID",
-    },
-    "int": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
-      "resolve": [Function],
-      "subscribe": undefined,
-      "type": "Int",
-    },
-    "string": Object {
-      "args": Object {},
-      "astNode": undefined,
-      "deprecationReason": undefined,
-      "description": undefined,
-      "extensions": undefined,
-      "resolve": [Function],
-      "subscribe": undefined,
       "type": "String",
     },
-  },
-  "interfaces": Array [],
-  "isTypeOf": undefined,
+    Object {
+      "name": "id",
+      "resolve": [Function],
+      "type": "ID",
+    },
+    Object {
+      "name": "int",
+      "resolve": [Function],
+      "type": "Int",
+    },
+    Object {
+      "name": "float",
+      "resolve": [Function],
+      "type": "Int",
+    },
+  ],
   "name": "Foo",
 }
+`;
+
+exports[`defining schemas is possible to for field types to reference-by-string 1`] = `
+"type A {
+  foo: B
+}
+
+type B {
+  bar: String
+}
+"
 `;

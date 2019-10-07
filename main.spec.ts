@@ -1,4 +1,4 @@
-import { object } from './main'
+import { object, createSchema, build } from './main'
 import * as GQL from 'graphql'
 
 describe('defining blocks', () => {
@@ -13,7 +13,7 @@ describe('defining blocks', () => {
         t.field('float', { type: 'Float' })
       },
     })
-    expect(Foo.toConfig()).toMatchSnapshot()
+    expect(Foo).toMatchSnapshot()
   })
 
   it('is possible to define inline field types', () => {
@@ -32,7 +32,7 @@ describe('defining blocks', () => {
         })
       },
     })
-    expect(A.toConfig()).toMatchSnapshot()
+    expect(A).toMatchSnapshot()
   })
 
   it('is possible to use shorthand for scalars', () => {
@@ -46,6 +46,24 @@ describe('defining blocks', () => {
         t.int('float')
       },
     })
-    expect(Foo.toConfig()).toMatchSnapshot()
+    expect(Foo).toMatchSnapshot()
+  })
+})
+
+describe('defining schemas', () => {
+  it('is possible to for field types to reference-by-string', () => {
+    const A = object({
+      name: 'A',
+      definition: t => {
+        t.field('foo', { type: 'B' })
+      },
+    })
+    const B = object({
+      name: 'B',
+      definition: t => {
+        t.string('bar')
+      },
+    })
+    expect(GQL.printSchema(createSchema([A, B]))).toMatchSnapshot()
   })
 })
