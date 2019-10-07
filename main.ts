@@ -48,6 +48,8 @@ const partition = <T>(predicate: Predicate<T>, xs: T[]): [T[], T[]] => {
 //
 
 namespace GQL2 {
+  export type StandardScalarName = 'Int' | 'Float' | 'ID' | 'Boolean' | 'String'
+
   export type GraphQLType =
     | GQL.GraphQLObjectType<any, any, any>
     | GQL.GraphQLScalarType
@@ -95,14 +97,10 @@ type StringFieldOptions = Omit<FieldOptions, 'type'>
 type BooleanFieldOptions = Omit<FieldOptions, 'type'>
 type IDFieldOptions = Omit<FieldOptions, 'type'>
 
-type FoxFieldType =
-  | 'Int'
-  | 'String'
-  | 'Boolean'
-  | 'ID'
-  | 'Float'
-  | string // TODO `string` should become a typegen lookup
-  | GQL2.GraphQLType
+// TODO `string` should become a typegen lookup;
+// Until this is fixed autocompletion for FoxFieldType
+// will be lost, as all other members here are string subset
+type FoxFieldType = GQL2.StandardScalarName | GQL2.GraphQLType | string
 
 /**
  * A defualt resolver factory. It applies the strategy
@@ -138,16 +136,16 @@ const createObjectDefiner = (state: ObjectDefinerState): ObjectDefiner => {
       state.fields.push({ name, ...options })
     },
     int: (name, options) => {
-      state.fields.push({ name, ...options, type: GQL.GraphQLInt })
+      state.fields.push({ name, ...options, type: GQL.GraphQLInt.name })
     },
     string: (name, options) => {
-      state.fields.push({ name, ...options, type: GQL.GraphQLString })
+      state.fields.push({ name, ...options, type: GQL.GraphQLString.name })
     },
     boolean: (name, options) => {
-      state.fields.push({ name, ...options, type: GQL.GraphQLBoolean })
+      state.fields.push({ name, ...options, type: GQL.GraphQLBoolean.name })
     },
     id: (name, options) => {
-      state.fields.push({ name, ...options, type: GQL.GraphQLID })
+      state.fields.push({ name, ...options, type: GQL.GraphQLID.name })
     },
   }
 }
@@ -253,7 +251,6 @@ const foxFieldTypeToGQLFieldType = (
       if (GQL2.isType(foxFieldType)) {
         return foxFieldType
       } else {
-        // return foxFieldType
         throw new Error(
           `Do not know how to convert fox type "${foxFieldType}" to GraphQL lib type.`,
         )
