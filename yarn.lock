@@ -824,9 +824,7 @@ apollo-server-types@^0.2.4:
     apollo-server-env "^2.4.3"
 
 apollo-server@^2.9.4:
-  version "2.9.4"
-  resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-2.9.4.tgz#564a0d0ec6dbefc86dbabe15bd23a83e48f58314"
-  integrity sha512-huAgQizkmzUkREixsSJHNM4ZnJ08plkwK70dm36mX9j+yYbc0h9J5b5o4E2Fb9U5PMR8kEVto1dz2rOJ0XPApA==
+  version "2.25.4"
   dependencies:
     apollo-server-core "^2.9.4"
     apollo-server-express "^2.9.4"
